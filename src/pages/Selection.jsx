@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import placeholder_art from '/src/assets/placeholder_art.jpg'
-import placeholder_code from '/src/assets/placeholder_code.jpg'
-import '/src/pages/Selection.css'
+import placeholder_art from '../assets/placeholder_art.jpg'
+import placeholder_code from '../assets/placeholder_code.jpg'
+import '../pages/Selection.css'
 import { Link, useNavigate } from "react-router-dom";
 
 function Selection() {
