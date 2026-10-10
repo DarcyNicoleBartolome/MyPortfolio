@@ -15,7 +15,7 @@ function App() {
     <div>
       {/* Enable multiple pages */}
       <Routes>
-        <Route path="/MyPortfolio/" element={<div>Welcome to the Home page</div>} />
+        <Route path="/MyPortfolio/" element={<div>Welcome to the Home page fnrjkvnbtkb</div>} />
         <Route path="/MyPortfolio/art" element={<ArtSection />} />
         <Route path="/MyPortfolio/compsci" element={<CompSciSection />} />
         <Route path="/MyPortfolio/selection" element={<Selection />} />
