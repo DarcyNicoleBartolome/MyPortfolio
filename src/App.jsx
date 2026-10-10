@@ -15,10 +15,10 @@ function App() {
     <div>
       {/* Enable multiple pages */}
       <Routes>
-        <Route path="/MyPortfolio/" element={<div>Welcome to the Home page fnrjkvnbtkb</div>} />
-        <Route path="/MyPortfolio/art" element={<ArtSection />} />
-        <Route path="/MyPortfolio/compsci" element={<CompSciSection />} />
-        <Route path="/MyPortfolio/selection" element={<Selection />} />
+        <Route path="/" element={<div>Welcome to the Home page fnrjkvnbtkb</div>} />
+        <Route path="/art" element={<ArtSection />} />
+        <Route path="/compsci" element={<CompSciSection />} />
+        <Route path="/selection" element={<Selection />} />
       </Routes>
     </div>
   )

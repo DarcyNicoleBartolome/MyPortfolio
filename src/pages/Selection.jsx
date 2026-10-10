@@ -15,7 +15,7 @@ function Selection() {
       {/* </div> */}
 
       <div class="images-container">
-        <Link to='/MyPortfolio/code' class="image">
+        <Link to='/compsci' class="image">
             <img src={placeholder_code} alt="" />
 
             <div class="description font-extrabold text-5xl ">
@@ -24,7 +24,7 @@ function Selection() {
             </div>
         </Link>
 
-        <Link to='/MyPortfolio/art' className='image'>
+        <Link to='/art' className='image'>
           <img src={placeholder_art} alt="" />
           <div class="description font-extrabold text-5xl">
               <h2>Art</h2>
