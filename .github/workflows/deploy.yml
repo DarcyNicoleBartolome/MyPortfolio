@@ -21,8 +21,6 @@ concurrency:
 
 env:
     NODE_VERSION: 24.21.0
-    GENERIC_LIBRARY: frontend/generic-library
-    BASE_URL: ${{ secrets.BASE_URL }}
 
 jobs:
     deploy:
