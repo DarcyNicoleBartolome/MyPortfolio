@@ -14,11 +14,11 @@ function Selection() {
           <img src={placeholder_art} alt='Art portfolio'  className='block w-1/2 h-full min-w-0 object-cover'/> */}
       {/* </div> */}
 
-      <div class="images-container">
-        <Link to='/compsci' class="image">
+      <div className="images-container">
+        <Link to='/compsci' className="image">
             <img src={placeholder_code} alt="" />
 
-            <div class="description font-extrabold text-5xl ">
+            <div className="description font-extrabold text-5xl ">
                 <h2 className="">Computer Science</h2>
                 {/* <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, repellat.</p> */}
             </div>
@@ -26,7 +26,7 @@ function Selection() {
 
         <Link to='/art' className='image'>
           <img src={placeholder_art} alt="" />
-          <div class="description font-extrabold text-5xl">
+          <div className="description font-extrabold text-5xl">
               <h2>Art</h2>
               {/* <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, repellat.</p> */}
           </div>
