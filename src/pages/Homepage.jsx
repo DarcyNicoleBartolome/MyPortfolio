@@ -3,15 +3,14 @@ import '../pages/Homepage.css'
 import { Link, useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-import {Video} from '@remotion/media';
-import {staticFile} from 'remotion';
 
 // Use this for safari alpha videos --> https://alphavids.io
 import placeholder_animate_safari from '../assets/placeholder_art/wind_transparent_mockup.mp4'
 import placeholder_animate_firefox from '../assets/placeholder_art/wind_transparent_mockup.webm'
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 // Opera 8.0+
 var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
@@ -33,43 +32,63 @@ import Navbar from '../Component/Navbar_placeholder';
 
 function Homepage() {
 
+
+   const navigate = useNavigate();
+   const handleSeeWork = () => {
+      navigate("/selection");
+   };
+
    const sectionRef = useRef(null);
    const videoRef = useRef(null);
 
-   useEffect(() => {
-      const video = videoRef.current;
-      const section = sectionRef.current;
-      if (!video || !section) return;
+   useGSAP(
+      (_, contextSafe) => {
+         const section = sectionRef.current;
+         const video = videoRef.current;
 
-      let ctx;
+         if (!section || !video) return;
 
-      const setup = () => {
-         ctx = gsap.context(() => {
-         gsap.to(video, {
+         let tween;
+
+         const setupAnimation = contextSafe(() => {
+         if (!Number.isFinite(video.duration) || video.duration <= 0) {
+            return;
+         }
+
+         // Remove an earlier instance if metadata fires again.
+         tween?.kill();
+
+         video.pause();
+         video.currentTime = 0;
+
+         tween = gsap.to(video, {
             currentTime: video.duration,
             ease: "none",
             scrollTrigger: {
                trigger: section,
                start: "top top",
-               end: "+=2000", // scroll distance for the full video
-               scrub: true,
+               end: "+=2500",
                pin: true,
+               scrub: 0.5,
+               invalidateOnRefresh: true,
             },
          });
-         }, section);
-      };
 
-      if (video.readyState >= 1) {
-         setup();
-      } else {
-         video.addEventListener("loadedmetadata", setup, { once: true });
-      }
+         ScrollTrigger.refresh();
+         });
 
-      return () => {
-         video.removeEventListener("loadedmetadata", setup);
-         ctx?.revert();
-      };
-   }, []);
+         if (video.readyState >= 1) {
+         setupAnimation();
+         } else {
+         video.addEventListener("loadedmetadata", setupAnimation);
+         }
+
+         return () => {
+         video.removeEventListener("loadedmetadata", setupAnimation);
+         };
+      },
+      { scope: sectionRef }
+   );
 
 
    return (
@@ -87,21 +106,25 @@ function Homepage() {
             </div>
          </div>
 
-         <div className="captions m">
+         <div className="captions flex flex-col">
             <h1 className='title'>Title Here</h1>
             <span className='body'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
          </div>
-         <section ref={sectionRef} className="scroll-video">
+         <Link to="/selection" className='justify-center text-6xl border-amber-50 border rounded-4xl p-8 inline-flex items-center gap-2'> See My Works </Link> 
+
+
+         {/* Testing Scroll Animation */}
+         <section ref={sectionRef} className="scroll-video-section">
             <video
-            // style={{ backgroundColor: 'transparent' }}
-               ref={videoRef}
-               src={isSafari ? placeholder_animate_safari : placeholder_animate_firefox}
-               muted
-               playsInline
-               preload="metadata"
-               // preload="auto"
-               />
+            ref={videoRef}
+            className="scroll-video"
+            src={placeholder_animate_safari}
+            muted
+            playsInline
+            preload="auto"
+            />
          </section>
+         
       </>
    )
 }

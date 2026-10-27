@@ -1,3 +1,5 @@
+import { Link, useNavigate } from "react-router-dom";
+
 import OrbitImages from './OrbitImages'
 import './CompsciWork.css'
 import cplusplus from  "../assets/apps/cplusplus.webp"
@@ -6,10 +8,16 @@ import js from "../assets/apps/js.png"
 import pi from "../assets/apps/raspberry_pi.png"
 import react from "../assets/apps/react.png"
 import ssh from "../assets/apps/ssh.jpg"
+import python from "../assets/apps/python.png"
+import blender from "../assets/apps/blender.png"
+
 
 import placeholder_image from "../assets/placeholder_art/art1.jpg"
+import workpic_1 from "../assets/project-2/work_pic1.png"
+
 import noise from "../assets/noise.jpg"
 import CloseIcon from '@mui/icons-material/Close';
+
 import { LiaWindowMinimize } from "react-icons/lia";
 import { LiaWindowMaximize } from "react-icons/lia";
 import { LiaWindowClose } from "react-icons/lia";
@@ -35,6 +43,13 @@ const images = [
   cplusplus
 ];
 
+const programs_used = [
+   python,
+   blender
+];
+
+
+
 function CompsciWork() {
    return (
       <>
@@ -55,11 +70,27 @@ function CompsciWork() {
                   <div className="info overflow-hidden"> 
                      <div className="text min-h-0 overflow-y-auto scrollbar-thin overflow-scroll">
 
-                        <h1 className='title'>Title</h1>
-                        <h2 className='date'>Date</h2>
+                        <h1 className='title'>Project-2: Blender Tour</h1>
+                        <h2 className='date'>October 21, 2026</h2>
 
-                        <p className="overflow-clip m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p className="overflow-clip m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p className="overflow-clip m-0">
+                           Developed an application that is designed to help an expert guide a novice through Blender remotely.
+                        </p>
+
+                        <p className="overflow-clip mt-2">
+                           My Contribution: Skethced and Developed each Graphical User Interface for expert and novice for communication. Additionally, allowd data transmission of drawing strokes between GUIs.
+                        </p>
+
+                        <p className="overflow-clip mt-2 text-blue-600">
+                           <Link to= "https://drive.google.com/file/d/1XeAwZ72OU4jkgtmBF5gOS34nHKHWL8Lc/view?usp=sharing"> Demo video 
+                           </Link>
+                           
+                        </p>
+                        <p className="overflow-clip mt-2 text-blue-600">
+                           <Link to="https://github.com/DarcyNicoleBartolome/project-2"> Source code </Link>
+                        </p>
+                        
+                        {/* <p className="overflow-clip m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> */}
                      </div>
 
                      <div class="inline-block w-auto min-w-[1em] h-0.5 self-stretch bg-neutral-100 dark:bg-white/10"></div>
@@ -67,7 +98,7 @@ function CompsciWork() {
                      <div className="orbit">
 
                         <OrbitImages className=''
-                        images={images}
+                        images={programs_used}
                         shape="ellipse"
                         radiusX={600}
                         radiusY={160}
@@ -90,7 +121,7 @@ function CompsciWork() {
 
                   <div className="display-work bg-[url(../assets/noise.jpg)]">
                      {/* <img className='noise' src={noise}/> */}
-                     <img className='work' src={placeholder_image}/>
+                     <img className='work' src={workpic_1}/>
                   </div>
                </div>
             </div>

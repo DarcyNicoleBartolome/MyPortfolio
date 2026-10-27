@@ -5,6 +5,8 @@ import '../pages/Selection.css'
 import { Link, useNavigate } from "react-router-dom";
 
 function Selection() {
+  const navigate = useNavigate();
+
 
   return (
     <>
