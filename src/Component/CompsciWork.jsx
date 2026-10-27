@@ -1,4 +1,7 @@
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, ImageWithZoom } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import OrbitImages from './OrbitImages'
 import './CompsciWork.css'
@@ -14,6 +17,8 @@ import blender from "../assets/apps/blender.png"
 
 import placeholder_image from "../assets/placeholder_art/art1.jpg"
 import workpic_1 from "../assets/project-2/work_pic1.png"
+import workpic_2 from "../assets/project-2/sketch.jpg"
+import workpic_3 from "../assets/project-2/GUI_test.png"
 
 import noise from "../assets/noise.jpg"
 import CloseIcon from '@mui/icons-material/Close';
@@ -119,9 +124,29 @@ function CompsciWork() {
 
                   <div class="inline-block h-auto min-h-[1em] w-0.5 self-stretch bg-neutral-100 dark:bg-white/10"></div>
 
-                  <div className="display-work bg-[url(../assets/noise.jpg)]">
+                  <div className="display-work ">
                      {/* <img className='noise' src={noise}/> */}
-                     <img className='work' src={workpic_1}/>
+                     <CarouselProvider
+                        className="work"
+                        visibleSlides={1}
+                        totalSlides={3}
+                        naturalSlideWidth={500}
+                        naturalSlideHeight={400}
+                        // orientation="horizontal"
+                        // hasMasterSpinner
+                     >
+                        <Slider className=''>
+                           <Slide index={0}><ImageWithZoom src={workpic_1} /></Slide>
+                           <Slide index={1}><ImageWithZoom src={workpic_2} /></Slide>
+                           <Slide index={2}><ImageWithZoom src={workpic_3} /></Slide>
+                        </Slider>
+
+                        <div className="split flex justify-evenly">
+                           <ButtonBack>Back</ButtonBack>
+                           <ButtonNext>Next</ButtonNext>
+                        </div>
+                     </CarouselProvider>
+                     {/* <img className='work' src={workpic_1}/> */}
                   </div>
                </div>
             </div>
